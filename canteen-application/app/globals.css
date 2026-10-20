@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-poppins), system-ui, -apple-system, Roboto, "Noto Sans", sans-serif;
+}
+
+body {
+  background: #f6f8f4;
+  color: #1e293b;
+  font-family: var(--font-sans);
+}
