@@ -62,8 +62,8 @@ export function LoginForm() {
 
       <div className="mt-8 rounded-2xl border-2 border-dashed border-amber-300 bg-amber-50 p-4 text-sm">
         <p className="font-semibold text-amber-900">🔑 Akun demo</p>
-        <p className="mt-1 text-amber-800">admin@kantinku.sch.id</p>
-        <p className="text-amber-800">kantin123</p>
+        <p className="mt-1 text-amber-800">bahlil@gmail.com</p>
+        <p className="text-amber-800">HidupJkW123</p>
       </div>
     </>
   );

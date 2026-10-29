@@ -30,8 +30,8 @@ export default function LoginPage() {
           </p>
           <div className="mt-8 flex gap-3">
             {[
-              ["24", "menu sehat"],
-              ["4", "stan kantin"],
+              ["35", "menu sehat"],
+              ["5", "stan kantin"],
               ["600+", "siswa"],
             ].map(([n, label]) => (
               <div key={label} className="rounded-2xl bg-white/15 px-4 py-3 backdrop-blur">
@@ -42,7 +42,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <p className="relative text-sm text-emerald-100">SMA Nusantara · Tahun ajaran 2026/2027</p>
+        <p className="relative text-sm text-emerald-100">SMA Negeri 4 · Tahun ajaran 2026/2027</p>
       </section>
 
       {/* Form */}

@@ -1,9 +1,9 @@
 // Login dummy untuk MVP, nanti diganti Supabase Auth.
 export const DUMMY_ADMIN = {
-  name: "Bu Sari",
+  name: "Kei Ganteng",
   role: "Admin Kantin",
-  email: "admin@kantinku.sch.id",
-  password: "kantin123",
+  email: "bahlil@gmail.com",
+  password: "HidupJkW123",
 };
 
 export const SESSION_COOKIE = "kantin_session";
