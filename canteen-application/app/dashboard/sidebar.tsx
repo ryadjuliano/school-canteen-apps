@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const MENU = [
   { href: "/dashboard", label: "Dashboard", icon: "🏠", ready: true },
-  { href: "#", label: "Pesanan", icon: "🧾", ready: false },
+  { href: "/pesanan", label: "Pesanan", icon: "🧾", ready: true },
   { href: "#", label: "Menu Makanan", icon: "🍱", ready: false },
   { href: "#", label: "Stan Kantin", icon: "🏪", ready: false },
   { href: "#", label: "Siswa", icon: "🎒", ready: false },
