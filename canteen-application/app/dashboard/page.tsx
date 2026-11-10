@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { DUMMY_ADMIN } from "@/lib/auth";
+import { Suspense } from "react";
+import { UserName } from "../components/user-card";
 import { formatRupiah } from "@/lib/format";
 import {
   BEST_SELLERS,
@@ -41,7 +42,11 @@ export default function DashboardPage() {
         </span>
         <p className="text-sm text-emerald-100">Data dummy · Hari ini</p>
         <h1 className="mt-1 text-2xl font-bold sm:text-3xl">
-          Selamat datang, {DUMMY_ADMIN.name}! 👋
+          Selamat datang,{" "}
+          <Suspense fallback="...">
+            <UserName />
+          </Suspense>
+          ! 👋
         </h1>
         <p className="mt-2 max-w-xl text-emerald-50">
           Istirahat kedua mulai pukul 12.00. Ada{" "}

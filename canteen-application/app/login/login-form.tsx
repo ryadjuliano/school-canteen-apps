@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useState } from "react";
 import { login, type LoginState } from "./actions";
 
@@ -60,11 +61,12 @@ export function LoginForm() {
         </button>
       </form>
 
-      <div className="mt-8 rounded-2xl border-2 border-dashed border-amber-300 bg-amber-50 p-4 text-sm">
-        <p className="font-semibold text-amber-900">🔑 Akun nemo</p>
-        <p className="mt-1 text-amber-800">admin@kantinku.sch.id</p>
-        <p className="text-amber-800">kantin123</p>
-      </div>
+      <p className="mt-6 text-center text-sm text-slate-500">
+        Belum punya akun?{" "}
+        <Link href="/register" className="font-semibold text-emerald-700 hover:underline">
+          Daftar di sini
+        </Link>
+      </p>
     </>
   );
 }
