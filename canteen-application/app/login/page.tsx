@@ -52,7 +52,7 @@ export default function LoginPage() {
             <Logo />
           </div>
           <h1 className="text-2xl font-bold">Halo, selamat datang! 👋</h1>
-          <p className="mt-1 text-slate-500">Masuk ke panel admin kantin.</p>
+          <p className="mt-1 text-slate-500">Masuk untuk pesan jajan atau kelola kantin.</p>
           <LoginForm />
         </div>
       </section>

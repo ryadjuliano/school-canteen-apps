@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { PROTECTED_PATHS } from "@/lib/nav";
 import { updateSession } from "@/lib/supabase/proxy";
 
-const PROTECTED = ["/dashboard", "/pesanan"];
 const AUTH_PAGES = ["/login", "/register"];
 
 export async function proxy(request: NextRequest) {
@@ -15,7 +15,7 @@ export async function proxy(request: NextRequest) {
     return redirect;
   };
 
-  if (!claims && PROTECTED.some((p) => pathname.startsWith(p))) {
+  if (!claims && PROTECTED_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`))) {
     return redirectTo("/login");
   }
   if (claims && AUTH_PAGES.includes(pathname)) {
@@ -24,6 +24,17 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 
+// Pemeriksaan peran dilakukan di tiap halaman (requireRole) dan di database (RLS).
 export const config = {
-  matcher: ["/dashboard/:path*", "/pesanan/:path*", "/login", "/register"],
+  matcher: [
+    "/dashboard/:path*",
+    "/pesanan/:path*",
+    "/jajan/:path*",
+    "/saldo/:path*",
+    "/menu/:path*",
+    "/stan/:path*",
+    "/pengguna/:path*",
+    "/login",
+    "/register",
+  ],
 };

@@ -55,11 +55,18 @@ language plpgsql
 security definer
 set search_path = ''
 as $$
+declare
+  v_name text := left(trim(coalesce(new.raw_user_meta_data ->> 'full_name', '')), 100);
 begin
+  -- Nama kosong/terlalu pendek → pakai email (selalu ≥ 3 karakter)
+  if char_length(v_name) < 2 then
+    v_name := left(new.email, 100);
+  end if;
+
   insert into public.profiles (id, full_name, email, class_name)
   values (
     new.id,
-    coalesce(nullif(trim(new.raw_user_meta_data ->> 'full_name'), ''), split_part(new.email, '@', 1)),
+    v_name,
     new.email,
     nullif(trim(new.raw_user_meta_data ->> 'class_name'), '')
   );

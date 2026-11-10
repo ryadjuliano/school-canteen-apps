@@ -3,18 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import type { NavItem } from "@/lib/nav";
 
-const MENU = [
-  { href: "/dashboard", label: "Dashboard", icon: "🏠", ready: true },
-  { href: "/pesanan", label: "Pesanan", icon: "🧾", ready: true },
-  { href: "#", label: "Menu Makanan", icon: "🍱", ready: false },
-  { href: "#", label: "Stan Kantin", icon: "🏪", ready: false },
-  { href: "#", label: "Siswa", icon: "🎒", ready: false },
-  { href: "#", label: "Top Up Saldo", icon: "💳", ready: false },
-  { href: "#", label: "Laporan", icon: "📈", ready: false },
-];
 
-export function Sidebar({ footer }: { footer: React.ReactNode }) {
+
+export function Sidebar({ items, footer }: { items: NavItem[]; footer: React.ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -58,34 +51,22 @@ export function Sidebar({ footer }: { footer: React.ReactNode }) {
           <p className="mb-2 px-3 text-xs font-semibold tracking-wider text-slate-400 uppercase">
             Menu
           </p>
-          {MENU.map((item) =>
-            item.ready ? (
+          {items.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
-                  pathname === item.href
-                    ? "bg-emerald-50 text-emerald-700"
-                    : "text-slate-600 hover:bg-slate-50"
+                  active ? "bg-emerald-50 text-emerald-700" : "text-slate-600 hover:bg-slate-50"
                 }`}
               >
                 <span className="text-lg">{item.icon}</span>
                 {item.label}
               </Link>
-            ) : (
-              <span
-                key={item.label}
-                className="flex cursor-not-allowed items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400"
-              >
-                <span className="text-lg grayscale">{item.icon}</span>
-                <span className="flex-1">{item.label}</span>
-                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold">
-                  Segera
-                </span>
-              </span>
-            ),
-          )}
+            );
+          })}
         </nav>
 
         <div className="mt-auto">{footer}</div>
